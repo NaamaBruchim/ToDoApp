@@ -1,5 +1,9 @@
-const todos = [];
-let id = 0;
+const TODOS_LS_KEY = "todos";
+const CURRENT_TODO_ID_LS_KEY = "current-todo-id";
+
+let todos = getCurrentState(TODOS_LS_KEY, []);
+let id = getCurrentState(CURRENT_TODO_ID_LS_KEY, 0);
+
 
 function getTodos() {
     return todos;
@@ -32,6 +36,15 @@ function changeTodoIsDone(id, isDone) {
     let todo = todos[index];
     todo.isDone = isDone;
     return todo;
+}
+
+function isTitleExists(title) {
+    return todos.some(todo => todo.title === title);
+}
+
+function clearChecked() {
+    todos = todos.filter(todo => todo.isDone === false);
+    return getTodos();
 }
 
 function findIndexById(id) {
