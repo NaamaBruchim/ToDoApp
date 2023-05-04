@@ -1,3 +1,5 @@
+import { addTodo, changeTodoIsDone, getTodos, removeTodo, removeAllTodo, isTitleExists } from "./todos.js";
+
 const addBtn = document.getElementById("add-btn");
 const todoInput = document.getElementById("todo-input");
 const todosListWrapper = document.getElementById("todos-list-wrapper");

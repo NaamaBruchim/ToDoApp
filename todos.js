@@ -5,11 +5,11 @@ let todos = getCurrentState(TODOS_LS_KEY, []);
 let id = getCurrentState(CURRENT_TODO_ID_LS_KEY, 0);
 
 
-function getTodos() {
+export function getTodos() {
     return todos;
 }
 
-function addTodo(title) {
+export function addTodo(title) {
     let todo = {
         id: id++,
         title: title,
@@ -20,29 +20,29 @@ function addTodo(title) {
     return todo;
 };
 
-function removeTodo(id) {
+export function removeTodo(id) {
     const index = findIndexById(id);
     return todos.splice(index, 1)[0];
 }
 
-function removeAllTodo() {
+export function removeAllTodo() {
     todos.splice(0, todos.length);
 
     return getTodos();
 }
 
-function changeTodoIsDone(id, isDone) {
+export function changeTodoIsDone(id, isDone) {
     const index = findIndexById(id);
     let todo = todos[index];
     todo.isDone = isDone;
     return todo;
 }
 
-function isTitleExists(title) {
+export function isTitleExists(title) {
     return todos.some(todo => todo.title === title);
 }
 
-function clearChecked() {
+export function clearChecked() {
     todos = todos.filter(todo => todo.isDone === false);
     return getTodos();
 }
